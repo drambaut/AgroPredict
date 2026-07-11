@@ -16,6 +16,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+!frontend/src/lib/
 parts/
 sdist/
 var/
@@ -202,6 +203,10 @@ cython_debug/
 # .vscode/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
+
+# Project data artifacts
+Data/cache_clima/
+Data/Evaluaciones_Agropecuarias_Municipales_EVA_20260608.csv
 
 # Ruff stuff:
 .ruff_cache/
