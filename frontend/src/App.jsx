@@ -50,6 +50,8 @@ const modelClimateDefaults = {
   humedad_media_pct: initialForm.humedad_media_pct,
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 const viewTitles = {
   home: 'Dashboard',
   simulation: 'Nueva simulación',
@@ -403,12 +405,12 @@ function App() {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/predict', payload);
+      const response = await axios.post(`${API_BASE_URL}/predict`, payload);
       setResult(response.data);
     } catch (err) {
       setError(
         err.response?.data?.detail ||
-          'No se pudo calcular la simulación. Revisa que el backend esté corriendo en localhost:8000.',
+          'No se pudo calcular la simulación. Revisa que el backend esté disponible.',
       );
     } finally {
       setLoading(false);
