@@ -18,7 +18,7 @@ AgroPredict permite al usuario registrar la información de su cultivo mediante 
 | Tipo de solución | Plataforma Web Progresiva (PWA) |
 | Tecnologías | React, Python, Scikit-learn *(por confirmar)* |
 | Inteligencia Artificial | Machine Learning |
-| Datos | Datos abiertos oficiales |
+| Datos | Datos abiertos oficiales e información climática de fuentes externa |
 | Región de aplicación | Orinoquía colombiana |
 ## Arquitectura de la solución
 <img width="1138" height="1360" alt="Diagrama en blanco - Página 1" src="https://github.com/user-attachments/assets/f11bff25-7c0b-4507-a3b2-7bf6346ac63f" />
