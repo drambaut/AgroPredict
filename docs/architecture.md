@@ -16,7 +16,7 @@ Aplicación Web Progresiva desarrollada para que los usuarios puedan registrar l
 **Tecnología:**
 - React
 
----
+
 
 ### Backend
 
@@ -25,7 +25,7 @@ Componente encargado de procesar las solicitudes realizadas por la aplicación, 
 **Tecnología:**
 - Python
 
----
+
 
 ### Modelo de Inteligencia Artificial
 
@@ -35,7 +35,7 @@ Modelo de Machine Learning entrenado con información agrícola y climática par
 - Scikit-learn
 - Gradient Boosting Regressor
 
----
+
 
 ### Fuentes de información
 
@@ -50,13 +50,13 @@ El modelo utiliza diferentes fuentes de información para su entrenamiento y fun
 **Información geográfica**
 - Centroides municipales utilizados para consultar información climática. (*POR CONFIRMAR)
 
----
+
 
 ### Almacenamiento
 
 Las simulaciones realizadas por el usuario pueden almacenarse localmente cuando la aplicación se utiliza sin conexión. Una vez el dispositivo recupera acceso a Internet, la información pendiente puede sincronizarse con la plataforma.
 
----
+
 
 ## Flujo general
 
