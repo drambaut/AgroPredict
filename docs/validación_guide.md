@@ -4,6 +4,12 @@
 
 Esta guía describe el proceso recomendado para validar el funcionamiento de AgroPredict y verificar que las principales funcionalidades de la solución operan correctamente.
 
+## Recomendaciones
+
+Para realizar una validación completa se recomienda utilizar un dispositivo móvil, ya que permite comprobar el proceso de instalación de la Plataforma Web Progresiva (PWA), el funcionamiento en modo offline y la sincronización de las simulaciones cuando se recupera la conexión a Internet.
+
+**Nota:** La validación desde un computador queda pendiente de confirmación para verificar si todas las funcionalidades offline están disponibles de la misma manera.
+
 
 
 ## Requisitos
@@ -92,7 +98,7 @@ La validación se considera satisfactoria cuando:
 
 ## Evidencias
 
-Como evidencia del proceso de validación se recomienda registrar:
+(**Falta comletar**)
 
 - Capturas de pantalla.
 - Resultados obtenidos durante las simulaciones.
