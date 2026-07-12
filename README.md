@@ -52,11 +52,11 @@ La demostración del funcionamiento de AgroPredict se encuentra disponible en la
 
 ## Resultados del proyecto
 
-- ✅ Plataforma Web Progresiva (PWA) funcional.
-- ✅ Simulación del rendimiento potencial de cultivos.
-- ✅ Integración de datos abiertos oficiales.
-- ✅ Funcionamiento online y offline.
-- ✅ Sincronización de simulaciones cuando se recupera la conexión.
+- ✓ Plataforma Web Progresiva (PWA) funcional.
+- ✓ Simulación del rendimiento potencial de cultivos.
+- ✓ Integración de datos abiertos oficiales.
+- ✓ Funcionamiento online y offline.
+- ✓ Sincronización de simulaciones cuando se recupera la conexión.
   
 ## Documentación
 La documentación técnica del proyecto se encuentra disponible en la carpeta **docs**, donde se describen:
