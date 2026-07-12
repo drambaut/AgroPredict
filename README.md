@@ -8,7 +8,7 @@ El sector agrícola enfrenta un alto nivel de incertidumbre debido a la variabil
 Desarrollar una Plataforma Web Progresiva (PWA) que, mediante Inteligencia Artificial y datos abiertos, apoye la planificación agrícola en la región de la Orinoquía, proporcionando estimaciones del rendimiento potencial de los cultivos y facilitando una toma de decisiones más informada, incluso en escenarios con conectividad limitada.
 ## Solución
 AgroPredict permite al usuario registrar la información de su cultivo mediante un formulario, ejecutar una simulación y obtener una estimación del rendimiento potencial junto con indicadores que apoyan la toma de decisiones. La plataforma funciona como una PWA, permitiendo su uso tanto en línea como sin conexión. Cuando el dispositivo recupera la conectividad, las simulaciones realizadas offline pueden sincronizarse mediante un CTA.
-#### Ficha técnica
+## Ficha técnica
 
 | Elemento | Información |
 |----------|-------------|
@@ -71,7 +71,7 @@ La documentación técnica del proyecto se encuentra disponible en la carpeta **
 
 ## Equipo
 
-
 | Integrante | Rol |
 |------------|-----|
-| **Daniel Rambaut** | Científico de Datos |
+| Daniel Rambaut | Científico de Datos |
+| Geraldine Galvis | Diseñadora UX/UI | 
