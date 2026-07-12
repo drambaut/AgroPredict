@@ -4,13 +4,12 @@
 
 Para el desarrollo de AgroPredict se tomó como referencia la metodología CRISP-ML(Q), un enfoque para proyectos de Machine Learning que organiza el ciclo de vida del modelo desde la comprensión del problema hasta la validación de los resultados.
 
----
 
 ## 1. Comprensión del problema
 
 Se identificó la necesidad de apoyar la planificación agrícola mediante una herramienta que permitiera estimar el rendimiento potencial de los cultivos, considerando variables agrícolas y climáticas, especialmente en regiones con limitaciones de conectividad como la Orinoquía colombiana.
 
----
+
 
 ## 2. Comprensión de los datos
 
@@ -22,7 +21,7 @@ Se recopilaron e integraron diferentes fuentes de información:
 
 Estas fuentes permitieron construir un conjunto de datos con variables agrícolas, territoriales y climáticas.
 
----
+
 
 ## 3. Preparación de los datos
 
@@ -36,7 +35,7 @@ Se realizó un proceso de preparación que incluyó:
 - Codificación de variables categóricas.
 - Construcción del conjunto de datos para entrenamiento.
 
----
+
 
 ## 4. Modelado
 
@@ -49,7 +48,7 @@ Entre los algoritmos evaluados se encuentran:
 
 El modelo seleccionado fue Gradient Boosting Regressor por presentar el mejor desempeño durante la evaluación.
 
----
+
 
 ## 5. Evaluación
 
@@ -61,7 +60,7 @@ El desempeño del modelo se evaluó mediante métricas de regresión, obteniendo
 
 Estas métricas permitieron seleccionar el modelo con mejor capacidad predictiva para el proyecto.
 
----
+
 
 ## 6. Implementación
 
