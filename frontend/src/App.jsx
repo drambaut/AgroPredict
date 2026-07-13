@@ -50,6 +50,16 @@ const modelClimateDefaults = {
 };
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const PREDICTION_RETRY_DELAYS = [0, 12000, 20000, 30000];
+
+const wait = (delay) => new Promise((resolve) => {
+  window.setTimeout(resolve, delay);
+});
+
+const isRetryablePredictionError = (error) => {
+  if (!error.response) return true;
+  return error.response.status >= 500 || typeof error.response.data === 'string';
+};
 
 const viewTitles = {
   home: 'Dashboard',
@@ -346,6 +356,7 @@ function App() {
   const [showInstallGuide, setShowInstallGuide] = useState(false);
   const [installGuideTab, setInstallGuideTab] = useState('android');
   const [loading, setLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
 
@@ -411,6 +422,7 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+    setLoadingMessage('Calculando simulación...');
     setError('');
 
     const payload = {
@@ -428,15 +440,44 @@ function App() {
     };
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/predict`, payload);
-      setResult(response.data);
+      let lastError = null;
+
+      for (let attempt = 0; attempt < PREDICTION_RETRY_DELAYS.length; attempt += 1) {
+        const delay = PREDICTION_RETRY_DELAYS[attempt];
+
+        if (delay > 0) {
+          setLoadingMessage('Despertando servidor, espera unos segundos...');
+          await wait(delay);
+        }
+
+        try {
+          const response = await axios.post(`${API_BASE_URL}/predict`, payload, { timeout: 25000 });
+
+          if (typeof response.data?.rendimiento_tha !== 'number') {
+            throw new Error('Respuesta temporal del servidor.');
+          }
+
+          setResult(response.data);
+          setLoadingMessage('');
+          return;
+        } catch (requestError) {
+          lastError = requestError;
+
+          if (!isRetryablePredictionError(requestError) || attempt === PREDICTION_RETRY_DELAYS.length - 1) {
+            throw requestError;
+          }
+        }
+      }
+
+      throw lastError;
     } catch (err) {
       setError(
         err.response?.data?.detail ||
-          'No se pudo calcular la simulación. Revisa que el backend esté disponible.',
+          'El servidor puede estar despertando. Intenta nuevamente en unos segundos.',
       );
     } finally {
       setLoading(false);
+      setLoadingMessage('');
     }
   };
 
@@ -722,10 +763,11 @@ function App() {
                   </details>
 
                   <button className="calculate-button" disabled={loading} type="submit">
-                    {loading ? 'Calculando simulación...' : 'Calcular simulación'}
+                    {loading ? loadingMessage : 'Calcular simulación'}
                   </button>
                 </div>
 
+                {loadingMessage && <p className="form-status">{loadingMessage}</p>}
                 {error && <p className="form-error">{error}</p>}
 
                 {result && (

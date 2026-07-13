@@ -848,6 +848,16 @@ button {
   font-weight: 600;
 }
 
+.form-status {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #eefaf5;
+  color: var(--teal-ink);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
 .simulation-result {
   display: grid;
   grid-template-columns: 1fr 1fr;
