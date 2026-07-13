@@ -1189,6 +1189,38 @@ button {
   color: var(--muted);
 }
 
+.settings-view {
+  max-width: 640px;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.settings-button {
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.settings-button-secondary {
+  border: 1px solid var(--line-strong);
+  background: #ffffff;
+  color: var(--text);
+}
+
+.settings-button-primary {
+  border: 1px solid var(--teal);
+  background: var(--teal);
+  color: #ffffff;
+}
+
 @media (max-width: 940px) {
   .dashboard-page {
     min-height: 100vh;

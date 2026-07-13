@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import {
   AlertTriangle,
-  Bell,
   ChevronDown,
   CircleMinus,
   CircleHelp,
@@ -56,7 +55,6 @@ const viewTitles = {
   home: 'Dashboard',
   simulation: 'Nueva simulación',
   analysis: 'Mis análisis',
-  alerts: 'Alertas',
   settings: 'Configuración',
 };
 
@@ -64,9 +62,25 @@ const navItems = [
   { id: 'home', label: 'Inicio', icon: Grid2X2 },
   { id: 'simulation', label: 'Nueva simulación', icon: PlusCircle },
   { id: 'analysis', label: 'Mis análisis', icon: SquareChartGantt },
-  { id: 'alerts', label: 'Alertas', icon: Bell },
   { id: 'settings', label: 'Configuración', icon: Settings },
 ];
+
+const departmentLabels = {
+  50: 'Meta',
+  81: 'Arauca',
+  85: 'Casanare',
+  99: 'Vichada',
+};
+
+const seasonLabels = {
+  A: 'Primer semestre',
+  B: 'Segundo semestre',
+};
+
+const cropLabels = {
+  'MAIZ TECNIFICADO': 'Maíz',
+  'MAIZ TRADICIONAL': 'Maíz tradicional',
+};
 
 const initialAuthForm = {
   fullName: '',
@@ -370,6 +384,15 @@ function App() {
     return result.rendimiento_tha * 1200000 - totalCosts;
   }, [result, totalCosts]);
 
+  const cropLabel = cropLabels[formData.desagregacion] || 'Maíz';
+  const departmentLabel = departmentLabels[formData.cod_dep] || formData.municipio;
+  const seasonLabel = seasonLabels[formData.semestre] || formData.semestre;
+  const formattedEstimatedProfit = estimatedProfit?.toLocaleString('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    maximumFractionDigits: 0,
+  });
+
   const handleChange = (event) => {
     const { name, value, type } = event.target;
     setFormData((current) => ({
@@ -491,23 +514,27 @@ function App() {
                 </button>
               </section>
 
-              <section className="summary-card">
-                <h2>Resumen rápido</h2>
+              {result && (
+                <section className="summary-card">
+                  <h2>Resumen rápido</h2>
 
-                <article className="summary-panel">
-                  <p>Ultima simulación:</p>
-                  <strong>Maíz- Villavicencio - 1er semestre</strong>
-                  <span>Ganancia estimada: $900.000</span>
-                </article>
+                  <article className="summary-panel">
+                    <p>Última simulación:</p>
+                    <strong>
+                      {cropLabel} - {departmentLabel} - {seasonLabel}
+                    </strong>
+                    <span>Ganancia estimada: {formattedEstimatedProfit}</span>
+                  </article>
 
-                <article className="summary-panel risk-panel">
-                  <p>Riesgo actual:</p>
-                  <span className="risk-badge">
-                    <CircleMinus size={13} fill="currentColor" strokeWidth={0} />
-                    Medio
-                  </span>
-                </article>
-              </section>
+                  <article className="summary-panel risk-panel">
+                    <p>Riesgo actual:</p>
+                    <span className="risk-badge">
+                      <CircleMinus size={13} fill="currentColor" strokeWidth={0} />
+                      Bajo
+                    </span>
+                  </article>
+                </section>
+              )}
             </div>
           )}
 
@@ -606,7 +633,7 @@ function App() {
                     </p>
                   )}
 
-                  <details className="climate-details" open>
+                  <details className="climate-details">
                     <summary>
                       <span>
                         Pronóstico climático esperado
@@ -733,47 +760,56 @@ function App() {
                 </button>
               </div>
 
-              <section className="analysis-summary-card">
-                <div className="analysis-summary-header">
-                  <div>
-                    <h2>Maíz</h2>
-                    <p>Arauca - Primer semestre</p>
+              {result ? (
+                <section className="analysis-summary-card">
+                  <div className="analysis-summary-header">
+                    <div>
+                      <h2>{cropLabel}</h2>
+                      <p>
+                        {departmentLabel} - {seasonLabel}
+                      </p>
+                    </div>
+
+                    <div className="analysis-profit">
+                      <span>Ganancia estimada</span>
+                      <strong>{formattedEstimatedProfit}</strong>
+                    </div>
                   </div>
 
-                  <div className="analysis-profit">
-                    <span>Ganancia estimada</span>
-                    <strong>$900.000</strong>
+                  <div className="analysis-success-alert">
+                    <CircleHelp size={19} strokeWidth={2} />
+                    <span>
+                      Alta probabilidad de rentabilidad. Las condiciones climáticas son favorables para este ciclo.
+                    </span>
                   </div>
-                </div>
 
-                <div className="analysis-success-alert">
-                  <CircleHelp size={19} strokeWidth={2} />
-                  <span>
-                    Alta probabilidad de rentabilidad. Las condiciones climáticas son favorables para este ciclo.
-                  </span>
-                </div>
+                  <div className="analysis-yield-panel">
+                    <span>Rendimiento estimado</span>
+                    <strong>{result.rendimiento_tha}</strong>
+                    <span>ton/ha</span>
+                  </div>
 
-                <div className="analysis-yield-panel">
-                  <span>Rendimiento estimado</span>
-                  <strong>{result?.rendimiento_tha ?? 67}</strong>
-                  <span>ton/ha</span>
-                </div>
+                  <div className="analysis-metrics-grid">
+                    <article className="analysis-metric-card">
+                      <h3>Nivel de riesgo</h3>
+                      <p className="analysis-risk-value">
+                        <AlertTriangle size={31} strokeWidth={1.8} />
+                        <span>Bajo</span>
+                      </p>
+                    </article>
 
-                <div className="analysis-metrics-grid">
-                  <article className="analysis-metric-card">
-                    <h3>Nivel de riesgo</h3>
-                    <p className="analysis-risk-value">
-                      <AlertTriangle size={31} strokeWidth={1.8} />
-                      <span>Bajo</span>
-                    </p>
-                  </article>
-
-                  <article className="analysis-metric-card">
-                    <h3>Predicción climática</h3>
-                    <p>Favorable</p>
-                  </article>
-                </div>
-              </section>
+                    <article className="analysis-metric-card">
+                      <h3>Predicción climática</h3>
+                      <p>Favorable</p>
+                    </article>
+                  </div>
+                </section>
+              ) : (
+                <section className="placeholder-view analysis-empty-state">
+                  <h2>No hay análisis disponibles</h2>
+                  <p>Crea una nueva simulación para ver tus resultados aquí.</p>
+                </section>
+              )}
 
               <section className="analysis-install-card">
                 <Wifi size={32} strokeWidth={1.8} />
@@ -792,18 +828,20 @@ function App() {
           )}
 
           {activeView === 'settings' && (
-            <div className="placeholder-view">
-              <h2>Configuración</h2>
-              <p>Aquí podrás ajustar tus preferencias de cuenta.</p>
+            <div className="placeholder-view settings-view">
+              <h2>Próximamente</h2>
+              <p>Aquí podrás administrar las configuraciones y personalizar tu experiencia.</p>
+              <div className="settings-actions">
+                <button className="settings-button settings-button-secondary" type="button" onClick={() => setActiveView('home')}>
+                  Cancel
+                </button>
+                <button className="settings-button settings-button-primary" type="button">
+                  Sincronizar ahora
+                </button>
+              </div>
             </div>
           )}
 
-          {activeView === 'alerts' && (
-            <div className="placeholder-view">
-              <h2>Alertas</h2>
-              <p>Aquí verás las alertas importantes de tus cultivos.</p>
-            </div>
-          )}
         </section>
       </div>
 
