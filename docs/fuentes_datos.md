@@ -18,7 +18,7 @@ Fuente utilizada para obtener la información histórica de producción agrícol
 
 **Enlace:**
 
-*(Pendiente agregar URL oficial de datos abiertos.)*
+
 
 
 
@@ -64,9 +64,6 @@ Variables principales:
 - lat
 - lon
 
-**Origen:**
-
-*(Pendiente confirmar la fuente del archivo centroides_municipios.csv.)*
 
 
 
