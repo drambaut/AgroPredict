@@ -69,6 +69,10 @@ La documentación técnica del proyecto se encuentra disponible en la carpeta **
 - Guía de validación.
 - Conclusiones.
 
+## Consideraciones
+Esta versión corresponde a un prototipo funcional.
+El backend se encuentra alojado en un servicio gratuito y debe iniciarse manualmente para quedar disponible. Por esta razón, la plataforma puede no estar disponible de forma continua como ocurriría en un entorno de producción.
+
 ## Equipo
 
 | Integrante | Rol |
