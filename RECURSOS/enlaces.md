@@ -14,3 +14,6 @@ https://agropredict-main.onrender.com/
 
 ## DEMO
 https://drive.google.com/file/d/13J7AlgWML5XKysTK9RS98bZ49zwNA2bV/view?usp=sharing
+
+## Notion HUS 
+https://app.notion.com/p/Agropredit-3796fe5b081a80879715e22088079203?source=copy_link
