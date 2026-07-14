@@ -12,6 +12,8 @@ La utilización de una Plataforma Web Progresiva (PWA) también permitió incorp
 
 Durante el desarrollo del proyecto se identificaron las siguientes limitaciones:
 
+- El backend del prototipo se ejecuta en un entorno de desarrollo y requiere iniciarse manualmente para quedar disponible.
+- Por esta razón, la solución no cuenta con disponibilidad continua como tendría un entorno de producción
 - Actualmente el modelo predictivo fue desarrollado para el cultivo de maíz.
 - La calidad de las predicciones depende de la disponibilidad y calidad de la información utilizada para el entrenamiento del modelo.
 - La solución requiere incorporar nuevos conjuntos de datos para ampliar su cobertura hacia otros cultivos y regiones del país.
