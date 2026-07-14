@@ -11,7 +11,14 @@ AgroPredict está compuesto por una Plataforma Web Progresiva (PWA), un backend 
 
 ### Frontend (PWA)
 
-Aplicación Web Progresiva desarrollada para que los usuarios puedan registrar la información del cultivo, ejecutar simulaciones y consultar los resultados desde dispositivos móviles o de escritorio. La aplicación permite continuar operando sin conexión a Internet una vez instalada como PWA.
+Aplicación Web Progresiva desarrollada para que los usuarios puedan registrar la información del cultivo, ejecutar simulaciones y consultar los resultados desde dispositivos móviles o de escritorio.
+
+**Capacidades:**
+- Acceso a la interfaz sin conexión a Internet una vez instalada como PWA.
+- Almacenamiento local de formularios cuando no hay conectividad.
+- Sincronización automática de datos cuando se recupera la conexión.
+
+**Limitación actual:** Las predicciones requieren conexión a Internet, ya que el modelo de Machine Learning se ejecuta en el backend en la nube.
 
 **Tecnología:**
 - React
@@ -54,15 +61,26 @@ El modelo utiliza diferentes fuentes de información para su entrenamiento y fun
 
 ### Almacenamiento
 
-Las simulaciones realizadas por el usuario pueden almacenarse localmente cuando la aplicación se utiliza sin conexión. Una vez el dispositivo recupera acceso a Internet, la información pendiente puede sincronizarse con la plataforma.
+Los formularios de simulación pueden almacenarse localmente cuando la aplicación se utiliza sin conexión. Una vez el dispositivo recupera acceso a Internet, la información pendiente puede sincronizarse con la plataforma para procesarla y obtener las predicciones.
+
+**Nota:** Dado que el modelo de predicción se encuentra en la nube, las simulaciones no pueden completarse completamente offline en la versión actual. El almacenamiento local permite guardar el estado del formulario para que el usuario no pierda su trabajo mientras no hay conexión.
 
 
 
 ## Flujo general
 
+**Con conexión a Internet:**
 1. El usuario registra la información del cultivo mediante un formulario.
 2. La aplicación envía la información para su procesamiento.
 3. El modelo de Machine Learning analiza las variables productivas y climáticas.
 4. Se genera una estimación del rendimiento potencial del cultivo.
 5. La plataforma presenta los resultados al usuario.
-6. Si la aplicación se encuentra sin conexión, la simulación se almacena localmente y se sincroniza cuando el dispositivo recupera acceso a Internet.
+
+**Sin conexión a Internet:**
+1. El usuario accede a la interfaz de la PWA (interfaz disponible offline).
+2. El usuario registra la información del cultivo mediante un formulario.
+3. La aplicación almacena el formulario localmente.
+4. Cuando el dispositivo recupera acceso a Internet, la información se sincroniza automáticamente.
+5. El servidor procesa la simulación y devuelve los resultados.
+
+**Nota sobre funcionalidad offline:** En la versión actual, las predicciones no pueden completarse offline ya que requieren el modelo de Machine Learning que se encuentra en el backend en la nube. Se espera en futuras versiones integrar un modelo nativo que permita hacer predicciones completamente offline.

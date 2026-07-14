@@ -14,4 +14,4 @@ Los productores agrícolas requieren herramientas que les permitan estimar el re
 
 El uso de datos abiertos, información climática e Inteligencia Artificial permite desarrollar soluciones que generen estimaciones del rendimiento potencial de los cultivos y fortalezcan la planificación agrícola.
 
-Adicionalmente, implementar la solución como una Plataforma Web Progresiva (PWA) permite que los usuarios continúen realizando simulaciones incluso sin conexión a Internet, sincronizando la información cuando recuperan la conectividad.
+Adicionalmente, implementar la solución como una Plataforma Web Progresiva (PWA) permite que los usuarios accedan a la herramienta y consulten el historial de simulaciones incluso sin conexión a Internet. Como trabajo futuro, se plantea el desarrollo de una aplicación nativa que permita ejecutar simulaciones sin conexión y sincronizar la información cuando se recupere la conectividad.

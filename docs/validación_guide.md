@@ -6,7 +6,7 @@ Esta guía describe el proceso recomendado para validar el funcionamiento de Agr
 
 ## Recomendaciones
 
-Para realizar una validación completa se recomienda utilizar un dispositivo móvil, ya que permite comprobar el proceso de instalación de la Plataforma Web Progresiva (PWA), el funcionamiento en modo offline y la sincronización de las simulaciones cuando se recupera la conexión a Internet.
+Para realizar una validación completa se recomienda utilizar un dispositivo móvil, ya que permite comprobar el proceso de instalación de la Plataforma Web Progresiva (PWA), el acceso a la interfaz en modo offline y la sincronización de los formularios cuando se recupera la conexión a Internet.
 
 **Nota:** La validación desde un computador queda pendiente de confirmación para verificar si todas las funcionalidades offline están disponibles de la misma manera.
 
@@ -19,7 +19,7 @@ Antes de iniciar la validación se recomienda contar con:
 - Acceso a la aplicación AgroPredict.
 - Verificar que el backend se encuentre iniciado y disponible, ya que en la versión actual del prototipo debe ejecutarse manualmente.
 - Un navegador web actualizado.
-- Conexión a Internet para el registro inicial y la primera simulación.
+- Conexión a Internet para el registro y para ejecutar simulaciones, ya que el modelo predictivo se encuentra alojado en la nube.
 - Datos de prueba para realizar simulaciones.
 
 
@@ -65,11 +65,11 @@ El usuario visualiza la estimación del rendimiento y la información asociada a
 
 **Objetivo**
 
-Verificar que la aplicación continúe funcionando en modo offline después de la primera sincronización.
+Verificar que la aplicación permita acceder a la interfaz y completar el formulario de simulación sin conexión a Internet.
 
 **Resultado esperado**
 
-El usuario puede registrar nuevas simulaciones sin conexión a Internet.
+El usuario puede acceder a la PWA y registrar la información de una nueva simulación sin conexión a Internet, quedando esta almacenada localmente. La predicción del rendimiento no se genera hasta que el dispositivo recupere la conexión, ya que el modelo se encuentra alojado en la nube.
 
 
 
@@ -77,11 +77,11 @@ El usuario puede registrar nuevas simulaciones sin conexión a Internet.
 
 **Objetivo**
 
-Verificar que las simulaciones realizadas sin conexión sean sincronizadas cuando el dispositivo recupere acceso a Internet.
+Verificar que los formularios registrados sin conexión sean sincronizados y procesados cuando el dispositivo recupere acceso a Internet.
 
 **Resultado esperado**
 
-Las simulaciones pendientes son enviadas correctamente y quedan disponibles en la plataforma.
+Los formularios pendientes son enviados correctamente, procesados por el modelo y sus resultados quedan disponibles en la plataforma.
 
 
 
@@ -92,8 +92,8 @@ La validación se considera satisfactoria cuando:
 - El usuario puede acceder a la plataforma.
 - Es posible ejecutar una simulación.
 - La plataforma genera una estimación del rendimiento del cultivo.
-- La aplicación funciona correctamente en modo online y offline.
-- Las simulaciones pendientes se sincronizan correctamente al recuperar la conexión.
+- La aplicación permite acceder a la interfaz y registrar formularios sin conexión.
+- Los formularios pendientes se sincronizan y procesan correctamente al recuperar la conexión.
 
 
 

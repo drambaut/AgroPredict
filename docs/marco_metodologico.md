@@ -66,4 +66,4 @@ Estas métricas permitieron seleccionar el modelo con mejor capacidad predictiva
 
 El modelo fue integrado en AgroPredict, una Plataforma Web Progresiva (PWA) que permite a los usuarios realizar simulaciones del rendimiento potencial de los cultivos.
 
-La aplicación funciona tanto en línea como sin conexión. Cuando el dispositivo recupera acceso a Internet, las simulaciones realizadas en modo offline pueden sincronizarse con la plataforma.
+La ejecución de simulaciones requiere conexión a Internet, ya que el modelo se encuentra alojado en el backend en la nube. La PWA permite acceder a la interfaz y consultar el historial de simulaciones sin conexión. Como trabajo futuro, se plantea el desarrollo de una aplicación nativa que integre el modelo entrenado y permita ejecutar simulaciones sin conexión, sincronizando la información con la plataforma cuando el dispositivo recupere acceso a Internet.

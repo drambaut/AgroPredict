@@ -49,7 +49,7 @@ const modelClimateDefaults = {
   humedad_media_pct: initialForm.humedad_media_pct,
 };
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
 const PREDICTION_RETRY_DELAYS = [0, 12000, 20000, 30000];
 
 const wait = (delay) => new Promise((resolve) => {
@@ -59,6 +59,17 @@ const wait = (delay) => new Promise((resolve) => {
 const isRetryablePredictionError = (error) => {
   if (!error.response) return true;
   return error.response.status >= 500 || typeof error.response.data === 'string';
+};
+
+const getPredictionErrorMessage = (error) => {
+  if (error.response?.status === 404) {
+    return 'No se encontró el endpoint de predicción. Revisa que VITE_API_URL apunte al backend de Render, no al frontend.';
+  }
+
+  return (
+    error.response?.data?.detail ||
+    'El servidor puede estar despertando. Intenta nuevamente en unos segundos.'
+  );
 };
 
 const viewTitles = {
@@ -471,10 +482,7 @@ function App() {
 
       throw lastError;
     } catch (err) {
-      setError(
-        err.response?.data?.detail ||
-          'El servidor puede estar despertando. Intenta nuevamente en unos segundos.',
-      );
+      setError(getPredictionErrorMessage(err));
     } finally {
       setLoading(false);
       setLoadingMessage('');
