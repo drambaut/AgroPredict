@@ -17,6 +17,7 @@ Para realizar una validación completa se recomienda utilizar un dispositivo mó
 Antes de iniciar la validación se recomienda contar con:
 
 - Acceso a la aplicación AgroPredict.
+- Verificar que el backend se encuentre iniciado y disponible, ya que en la versión actual del prototipo debe ejecutarse manualmente.
 - Un navegador web actualizado.
 - Conexión a Internet para el registro inicial y la primera simulación.
 - Datos de prueba para realizar simulaciones.
