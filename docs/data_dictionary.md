@@ -46,7 +46,7 @@ El conjunto de datos integra información agrícola, territorial y climática pr
 | temp_media_c | Temperatura media del semestre. | °C |
 | temp_max_media_c | Temperatura máxima promedio. | °C |
 | temp_min_media_c | Temperatura mínima promedio. | °C |
-| radiacion_media | Radiación solar promedio. | W/m² *(por confirmar)* |
+| radiacion_media | Radiación solar promedio. | W/m²  |
 | humedad_media_pct | Humedad relativa promedio. | % |
 
 ---
